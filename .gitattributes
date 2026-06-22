@@ -1,0 +1,5 @@
+# Design reference files — keep in the repo but exclude from GitHub's
+# language stats (the app itself is Swift / SpriteKit).
+html-animations/** linguist-documentation
+*.html linguist-documentation
+*.dc.html linguist-documentation
