@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#06091a">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="sky" cx="50%" cy="0%" r="100%">
+        <stop offset="0%" stop-color="#34508f"/><stop offset="60%" stop-color="#16234f"/><stop offset="100%" stop-color="#06091a"/>
+      </radialGradient>
+      <linearGradient id="pod" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffe2a0"/><stop offset="50%" stop-color="#ffb451"/><stop offset="100%" stop-color="#ff9128"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#5fe6ff"/><stop offset="100%" stop-color="#5fe6ff" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#sky)"/>
+    <rect y="430" width="1200" height="370" fill="#3a4a86"/>
+    <rect y="430" width="1200" height="10" fill="#6a5e82"/>
+    <circle cx="600" cy="400" r="150" fill="url(#glow)"/>
+    <g transform="translate(600 400)">
+      <rect x="-58" y="-70" width="116" height="116" rx="48" fill="url(#pod)" stroke="#c66a16" stroke-width="6"/>
+      <circle cx="0" cy="-30" r="34" fill="#4fccf0" stroke="#c66a16" stroke-width="6"/>
+      <polygon points="-44,46 44,46 0,120" fill="#9aa6cc"/>
+    </g>
+    <polygon points="360,250 400,266 380,300 360,290 348,262" fill="#54e39a"/>
+    <polygon points="820,520 856,534 838,566 818,556 808,530" fill="#a877ff"/>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#06091a; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 50% 0%, #14205a, #06091a 70%);font-family:'Nunito',sans-serif;">
+  <x-import component="DrillScene" from="./_drillscene.jsx" hint-size="100%,100%"></x-import>
+</div>
+</x-dc>
+</body>
+</html>
