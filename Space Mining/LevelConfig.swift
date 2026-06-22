@@ -95,6 +95,10 @@ struct LevelConfig {
     let unlock: Unlock
     let enemies: [EnemySpawn]   // empty for now — hook for future enemy waves
 
+    // Level-map presentation
+    let nodeTint: String        // planet-node color on the map
+    var isBoss: Bool = false     // shows the BOSS tag on the map
+
     var totalRows: Int { skyRows + groundRows }
     var surfaceRow: Int { skyRows - 1 }
 }

@@ -89,6 +89,7 @@ class GameScene: SKScene {
     var maxDepthMeters = 0
     var oreCollectedTotal = 0
     var cashEarned = 0
+    var earnedStars = 0
 
     // --- Nodes ---
     var cameraNode = SKCameraNode()

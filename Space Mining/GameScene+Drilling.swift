@@ -18,7 +18,12 @@ extension GameScene {
         }
         guard met else { return }
         levelComplete = true
-        player.markCompleted(level.id, depthMeters: maxDepthMeters)
+        // Stars: 1 for finishing, +1 for fuel efficiency, +1 for a full-ish haul.
+        var stars = 1
+        if fuel / maxFuel >= 0.35 { stars += 1 }
+        if oreCollectedTotal >= 10 { stars += 1 }
+        earnedStars = stars
+        player.markCompleted(level.id, depthMeters: maxDepthMeters, stars: stars)
         showCompletionPopup()
     }
 
@@ -57,13 +62,20 @@ extension GameScene {
         let stats = SKLabelNode(fontNamed: font)
         stats.text = "\(level.name)  ·  reached \(maxDepthMeters)m"
         stats.fontSize = 15; stats.fontColor = SKColor(white: 0.85, alpha: 1)
-        stats.position = CGPoint(x: 0, y: 22); panel.addChild(stats)
+        stats.position = CGPoint(x: 0, y: 24); panel.addChild(stats)
+
+        // earned stars (★★★ / ★★☆ / …)
+        let starRow = SKLabelNode(fontNamed: font)
+        starRow.text = String(repeating: "★", count: earnedStars) + String(repeating: "☆", count: 3 - earnedStars)
+        starRow.fontSize = 24
+        starRow.fontColor = SKColor(red: 1, green: 0.84, blue: 0.35, alpha: 1)
+        starRow.position = CGPoint(x: 0, y: -4); panel.addChild(starRow)
 
         panel.addChild(popupButton("🛒  Buy Upgrades", name: "cp_upgrades",
-                                    color: SKColor(red: 0.2, green: 0.6, blue: 0.45, alpha: 1), y: -34))
+                                    color: SKColor(red: 0.2, green: 0.6, blue: 0.45, alpha: 1), y: -46))
         let nextText = nextLevel() != nil ? "Next Level  →" : "Back to Worlds"
         panel.addChild(popupButton(nextText, name: "cp_next",
-                                    color: SKColor(red: 0.25, green: 0.45, blue: 0.85, alpha: 1), y: -100))
+                                    color: SKColor(red: 0.25, green: 0.45, blue: 0.85, alpha: 1), y: -110))
 
         uiLayer.addChild(panel)
         completionPanel = panel
